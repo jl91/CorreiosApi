@@ -17,6 +17,7 @@ class ConnectionFactory implements ConnectionInterface
     private $host     = 'localhost';
     private $driver   = 'mysql';
     private $options  = [
+         \PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'UTF8'"
     ];
     private $dsn      = null;
 
@@ -24,9 +25,6 @@ class ConnectionFactory implements ConnectionInterface
     {
         $this->dsn     = sprintf("%s:host=%s;dbname=%s", $this->driver, $this->host,
             $this->database);
-        $this->options = [
-            \PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'UTF8'"
-        ];
     }
 
     /**
